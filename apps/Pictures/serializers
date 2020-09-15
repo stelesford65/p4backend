@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from apps.Pictures.models import Pictures
+from p4backend.apps.pictures.models import Pictures
 
 
 class PictureSerializer(serializers.ModelSerializer):
