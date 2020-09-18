@@ -4,14 +4,14 @@ from pictures.models import Pictures, Blog_entry
 
 class PictureSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
-    # image_url = serializers.SerializerMethodField('get_image_url')
+    image_url = serializers.SerializerMethodField('get_image_url')
 
     class Meta:
         model = Pictures
         fields = ('id', 'owner', 'image')
 
-    # def get_image_url(self, obj):
-    #     return obj.image.url
+    def get_image_url(self, obj):
+        return obj.image.url
 
 
 class Blog_entrySerializer(serializers.ModelSerializer):
