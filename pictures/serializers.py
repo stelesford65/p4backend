@@ -1,36 +1,26 @@
 from rest_framework import serializers
-from apps.pictures.models import Pictures, Blog_entry
+from pictures.models import Pictures, Blog_entry
 
 
 class PictureSerializer(serializers.ModelSerializer):
+    owner = serializers.ReadOnlyField(source='owner.username')
+    # image_url = serializers.SerializerMethodField('get_image_url')
 
-   owner = serializers.ReadOnlyField(source='owner.username')
-   image_url = serializers.SerializerMethodField('get_image_url')
+    class Meta:
+        model = Pictures
+        fields = ('id', 'owner', 'image')
 
-   class Meta:
-      model = Pictures
-      fields = ('id','owner' 'image', 'image_url')
+    # def get_image_url(self, obj):
+    #     return obj.image.url
 
-   def get_image_url(self, obj):
-      return obj.image.url
 
 class Blog_entrySerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     pictures = PictureSerializer(many=True, read_only=True, required=False)
+
     class Meta:
         model = Blog_entry
         fields = ('id', 'title', 'owner', 'description', 'pictures', 'created_at', 'updated_at')
-
-
-
-
-
-
-
-
-
-
-
 
 # class PictureSerializer(serializers.py.ModelSerializer):
 #    # model Customer is user defined and it consist of three

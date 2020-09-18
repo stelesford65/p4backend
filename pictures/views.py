@@ -1,22 +1,17 @@
-from apps.pictures.models import Pictures, Blog_entry
-from rest_framework.response import Response
-from rest_framework import status
+from pictures.models import Pictures, Blog_entry
 from rest_framework import generics
-from rest_framework import viewsets
 from rest_framework.exceptions import (
    ValidationError, PermissionDenied
 )
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.permissions import IsAuthenticated
 # this allows us to do all the CRUD
 from rest_framework import viewsets
 # this is for HTTP status
-from rest_framework import status
 # this allows to write and read data from our DB
-from apps.pictures.serializers import PictureSerializer, Blog_entrySerializer
+from pictures.serializers import PictureSerializer
+
+
 # we need this to send out the object (data) to the user
-from rest_framework.response import Response
-from rest_framework import permissions
-from rest_framework_simplejwt import authentication
 # Create your views here.
 
 
