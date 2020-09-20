@@ -3,6 +3,7 @@ from rest_framework import generics
 from rest_framework.exceptions import (
    ValidationError, PermissionDenied
 )
+from rest_framework_simplejwt import authentication
 from rest_framework.permissions import IsAuthenticated
 # this allows us to do all the CRUD
 from rest_framework import viewsets
