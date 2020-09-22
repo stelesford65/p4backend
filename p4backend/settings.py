@@ -59,10 +59,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
 ]
 
-CORS_ORIGIN_WHITELIST = (
-    'google.com',
-    'https://stp4.netlify.app'
-)
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 ROOT_URLCONF = 'p4backend.urls'
