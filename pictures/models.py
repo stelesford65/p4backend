@@ -22,7 +22,7 @@ class Blog_entry(models.Model):
 class Pictures(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.CharField(max_length=255)
-    blog_post = models.ForeignKey(Blog_entry, on_delete=models.CASCADE)
+    blog_entry = models.ForeignKey(Blog_entry, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.image

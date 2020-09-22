@@ -9,7 +9,8 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework import viewsets
 # this is for HTTP status
 # this allows to write and read data from our DB
-from pictures.serializers import PictureSerializer
+from pictures.serializers import PictureSerializer, Blog_entrySerializer
+
 
 
 # we need this to send out the object (data) to the user
@@ -22,7 +23,7 @@ class Blog_entryViewSet(viewsets.ModelViewSet):
       # list  categories per current loggedin user
       queryset = Blog_entry.objects.all().filter(owner=self.request.user)
       return queryset
-   serializer_class = PictureSerializer
+   serializer_class = Blog_entrySerializer
    def create(self, request, *args, **kwargs):
       # check if category already exists for current logged in user
       blog_entry = Blog_entry.objects.filter(
@@ -89,6 +90,7 @@ class PicturesViewSet(viewsets.ModelViewSet):
       return super().create(request, *args, **kwargs)
    def perform_create(self, serializer):
       serializer.save(owner=self.request.user)
+
    def destroy(self, request, *args, **kwargs):
       pictures = Pictures.objects.get(pk=self.kwargs["pk"])
       if not request.user == pictures.owner:
@@ -96,6 +98,7 @@ class PicturesViewSet(viewsets.ModelViewSet):
             "You have no permissions to delete this picture"
          )
       return super().destroy(request, *args, **kwargs)
+
    def update(self, request, *args, **kwargs):
       pictures = Pictures.objects.get(pk=self.kwargs["pk"])
       if not request.user == pictures.owner:
