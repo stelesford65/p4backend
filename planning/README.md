@@ -90,5 +90,6 @@ The repository for the frontend of your application should include:
 
 - Your API Backend must be deployed to Heroku and your front-end must be deployed to
   Netlify. Applications that are not deployed will be considered incomplete.
- 
+ Heroku: https://stp4backend.herokuapp.com/
+ Netlify: https://stp4.netlify.app/#/
 ---
