@@ -59,7 +59,9 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
 ]
 
-CORS_ORIGIN_ALLOW_ALL = True
+DEBUG = True
+
+CORS_ORIGIN_ALLOW_ALL = DEBUG
 
 
 ROOT_URLCONF = 'p4backend.urls'
